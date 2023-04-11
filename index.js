@@ -9,18 +9,16 @@ const mongoose = require("mongoose");
 const User = require("./models/User");
 const bcrypt = require("bcrypt");
 const secret = bcrypt.genSaltSync(10);
-const download = require("image-downloader");
 const username = encodeURIComponent("prajwal");
 const password = encodeURIComponent(process.env.password);
-const multer=require('multer');
 const fs=require('fs');
 const Place=require('./models/Place');
 const Booking=require('./models/Booking');
 // middleware
 app.use(cors());
 app.use(express.json());
-app.use('/uploads',express.static(__dirname+'/uploads'));
-const photosMiddleware=multer({dest:'uploads'});
+
+
 // database
 mongoose.connect(
   `mongodb+srv://${username}:${password}@cluster0.q0nvtjo.mongodb.net/?retryWrites=true&w=majority`
